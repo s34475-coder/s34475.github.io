@@ -1,38 +1,53 @@
-หน้าสะสมผลงาน
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แฟ้มสะสมงานของฉัน</title>
-    <style>
-        body { font-family: sans-serif; background-color: #f4f7f6; text-align: center; padding: 30px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .project-card { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: left; }
-        .btn { display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
-    </style>
+    <title>ผลงานและเกียรติบัตร | สายช่าง-วิศวะ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="about.html">ประวัติส่วนตัว</a></li>
+            <li><a href="portfolio.html" class="active">ผลงาน</a></li>
+            <li><a href="contact.html">ติดต่อ</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <h1>📁 แฟ้มสะสมงาน (Portfolio)</h1>
-        <p>นี่คือพื้นที่รวบรวมผลงานและกิจกรรมที่ภูมิใจครับ</p>
+    <section class="container page-content">
+        <h2 class="page-title">PORTFOLIO <span>// ผลงานและเกียรติบัตร</span></h2>
+        
+        <div class="grid-container">
+            <!-- ชิ้นงานที่ 1 -->
+            <div class="work-card">
+                <img src="https://via.placeholder.com/400x250/2C3034/D4AF37?text=Image+1" alt="ผลงานที่ 1">
+                <div class="work-desc">
+                    <h4>เกียรติบัตรเข้าร่วมแข่งขัน [ระบุชื่องาน]</h4>
+                    <p>ได้รับรางวัลชนะเลิศในการออกแบบนวัตกรรมสิ่งประดิษฐ์ระดับโรงเรียน</p>
+                </div>
+            </div>
+            
+            <!-- ชิ้นงานที่ 2 -->
+            <div class="work-card">
+                <img src="https://via.placeholder.com/400x250/2C3034/D4AF37?text=Image+2" alt="ผลงานที่ 2">
+                <div class="work-desc">
+                    <h4>โครงงานวิทยาศาสตร์และเทคโนโลยี</h4>
+                    <p>ร่วมกันสร้างและประกอบหุ่นยนต์เดินตามเส้นเพื่อใช้ในการแข่งขัน</p>
+                </div>
+            </div>
 
-        <!-- กล่องผลงานชิ้นที่ 1 -->
-        <div class="project-card">
-            <h3>1. โครงงาน/ชิ้นงานวิทยาศาสตร์คำนวณ</h3>
-            <p>รายละเอียดชิ้นงาน: เขียนอธิบายสั้นๆ ว่าทำอะไร ได้เรียนรู้อะไรจากงานนี้บ้าง</p>
+            <!-- ชิ้นงานที่ 3 -->
+            <div class="work-card">
+                <img src="https://via.placeholder.com/400x250/2C3034/D4AF37?text=Image+3" alt="ผลงานที่ 3">
+                <div class="work-desc">
+                    <h4>กิจกรรมค่ายวิศวกรรมศาสตร์</h4>
+                    <p>เข้าร่วมค่ายแนะแนววิศวกรรมศาสตร์ มหาวิทยาลัยบูรพา ได้ลงมือปฏิบัติจริงในห้องช่าง</p>
+                </div>
+            </div>
         </div>
-
-        <!-- กล่องผลงานชิ้นที่ 2 -->
-        <div class="project-card">
-            <h3>2. กิจกรรม/เกียรติบัตรที่ได้รับ</h3>
-            <p>รายละเอียดชิ้นงาน: เข้าร่วมการประกวด หรือกิจกรรมของโรงเรียน...</p>
-        </div>
-
-        <!-- ปุ่มกดกลับหน้าแรก -->
-        <a href="index.html" class="btn">🔙 กลับหน้าแรก</a>
-    </div>
-
+    </section>
 </body>
 </html>
