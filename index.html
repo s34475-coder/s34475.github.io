@@ -3,36 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คุณากร ดวงดารา</title>
+    <title>My Portfolio</title>
     <style>
+        :root {
+            --primary-color: #4f46e5;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ca7613;
-            color: #333;
-            text-align: center;
-            padding: 50px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .card {
-            background: white;
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: var(--card-bg);
             padding: 30px;
-            border-radius: 50px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 500px;
-            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        h1 { color: #2c3e50; }
-        p { font-size: 18px; line-height: 1.6; }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+        }
+
+        /* หน้าแรก - รูปภาพ */
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-color);
+            background-color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ปุ่มกด */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #6b7280;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+        }
+
+        /* เนื้อหาภายในหน้า */
+        .content-box {
+            text-align: left;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+
+        .project-item {
+            background: #f9fafb;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน 👋</h1>
-        <p>สวัสดีครับ! ผมชื่อ <strong>คุณากร(Kunakorn)</strong></p>
-        <p>ขณะนี้กำลังศึกษา/สนใจด้าน มหาวิทยาลัยเกษตรศาสตร์ วท.บ.สาขาวิชาประมง (ภาษาไทย ปกติ) วิทยาเขต บางเขน</p>
-        <p>นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages!</p>
-        <a href="portfolio.html" style="display:inline-block; background:#3498db; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; margin-top:15px;">👉 ดูแฟ้มสะสมงานของผม</a>
+    <div class="container">
+        
+        <!-- หน้าที่ 1: หน้าหลัก -->
+        <div id="page-1" class="page active">
+            <h1>ยินดีต้อนรับสู่ Portfolio ของฉัน</h1>
+            
+            <!-- ช่องใส่รูป (สามารถเปลี่ยนลิงก์ภาพใน src ได้) -->
+            <div class="profile-img-container">
+                <img src="https://via.placeholder.com/150" alt="Profile Image" id="preview-img">
+            </div>
+            
+            <p>สวัสดีครับ/ค่ะ! ฉันคือนักพัฒนาเว็บไซต์และผู้สร้างสรรค์ผลงาน</p>
+            <p style="font-size: 14px; color: gray;">(คุณสามารถเปลี่ยนรูปภาพได้โดยแก้ลิงก์รูปในโค้ด HTML)</p>
+
+            <div class="btn-group">
+                <button class="btn" onclick="changePage(2)">ดูประวัติส่วนตัว</button>
+                <button class="btn" onclick="changePage(3)">ดูผลงาน</button>
+                <button class="btn" onclick="changePage(4)">ช่องทางติดต่อ</button>
+            </div>
+        </div>
+
+        <!-- หน้าที่ 2: ประวัติส่วนตัว -->
+        <div id="page-2" class="page">
+            <h2>ประวัติส่วนตัว</h2>
+            <div class="content-box">
+                <p><strong>ชื่อ-นามสกุล:</strong> [ใส่ชื่อของคุณที่นี่]</p>
+                <p><strong>การศึกษา:</strong> [ใส่วุฒิการศึกษา/โรงเรียน/มหาวิทยาลัย]</p>
+                <p><strong>ทักษะความสามารถ:</strong> HTML, CSS, JavaScript, GitHub, ฯลฯ</p>
+                <p><strong>เกี่ยวกับฉัน:</strong> เป็นคนชอบเรียนรู้เทคโนโลยีใหม่ๆ และสนุกกับการเขียนโค้ดเพื่อสร้างโปรเจกต์ที่มีประโยชน์</p>
+            </div>
+            <div class="btn-group" style="justify-content: space-between;">
+                <button class="btn btn-secondary" onclick="prevPage()">ย้อนกลับ</button>
+                <button class="btn" onclick="changePage(3)">หน้าถัดไป (ผลงาน)</button>
+            </div>
+        </div>
+
+        <!-- หน้าที่ 3: ผลงาน -->
+        <div id="page-3" class="page">
+            <h2>ผลงานของฉัน</h2>
+            <div class="content-box">
+                <div class="project-item">
+                    <h3>โปรเจกต์ที่ 1: เว็บไซต์ร้านค้าออนไลน์</h3>
+                    <p>พัฒนาระบบตะกร้าสินค้าและหน้าบ้านด้วย HTML/CSS/JS</p>
+                </div>
+                <div class="project-item">
+                    <h3>โปรเจกต์ที่ 2: แอปพลิเคชัน To-Do List</h3>
+                    <p>แอปสำหรับบันทึกรายการสิ่งที่ต้องทำ บันทึกข้อมูลลงเครื่องได้</p>
+                </div>
+            </div>
+            <div class="btn-group" style="justify-content: space-between;">
+                <button class="btn btn-secondary" onclick="prevPage()">ย้อนกลับ</button>
+                <button class="btn" onclick="changePage(4)">หน้าถัดไป (ติดต่อ)</button>
+            </div>
+        </div>
+
+        <!-- หน้าที่ 4: ช่องทางติดต่อ -->
+        <div id="page-4" class="page">
+            <h2>ช่องทางติดต่อ</h2>
+            <div class="content-box" style="text-align: center;">
+                <p>📬 <strong>Email:</strong> your.email@example.com</p>
+                <p>📞 <strong>Phone:</strong> 0xx-xxx-xxxx</p>
+                <p>💻 <strong>GitHub:</strong> github.com/yourusername</p>
+                <p>💬 <strong>Line ID:</strong> yourlineid</p>
+            </div>
+            <div class="btn-group" style="justify-content: flex-start;">
+                <button class="btn btn-secondary" onclick="prevPage()">ย้อนกลับ</button>
+                <button class="btn" onclick="changePage(1)" style="margin-left: auto;">กลับสู่หน้าหลัก</button>
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 4;
+
+        function changePage(pageNumber) {
+            // ซ่อนทุกหน้า
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById(`page-${i}`).classList.remove('active');
+            }
+            // แสดงหน้าที่เลือก
+            document.getElementById(`page-${pageNumber}`).classList.add('active');
+            currentPage = pageNumber;
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                changePage(currentPage - 1);
+            }
+        }
+    </script>
 
 </body>
 </html>
