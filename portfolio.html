@@ -3,11 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ผลงานและกิจกรรม</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ผลงานและกิจกรรม | สายช่าง-วิศวะ</title>
+    
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS ตกแต่งสไตล์ เทา-เหลือง (Engineering Portfolio Theme) -->
+    <style>
+        /* ==========================================
+           1. RESET & BASE STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #121212; /* เทาเข้ม */
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ==========================================
+           2. NAVIGATION BAR
+           ========================================== */
+        nav {
+            background-color: #1a1a1a;
+            border-bottom: 3px solid #ffcc00;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #ffcc00;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* ==========================================
+           3. PORTFOLIO GRID SECTION
+           ========================================== */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .page-title span {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* ระบบ Grid จัดเรียงรูปภาพ */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        /* การ์ดแสดงผลงานแต่ละชิ้น */
+        .work-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #333;
+            border-bottom: 3px solid #ffcc00; /* ไฮไลท์เส้นล่างสีเหลือง */
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-7px);
+            border-color: #ffcc00;
+            box-shadow: 0 12px 25px rgba(255, 204, 0, 0.2);
+        }
+
+        /* กรอบควบคุมขนาดรูปภาพ */
+        .work-card .img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #242424;
+            position: relative;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .work-card:hover img {
+            transform: scale(1.08); /* เอฟเฟกต์ซูมรูปเบาๆ เมื่อชี้ */
+        }
+
+        /* ส่วนคำอธิบายใต้รูป */
+        .work-desc {
+            padding: 1.2rem 1.5rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background-color: #1a1a1a;
+        }
+
+        .work-desc h4 {
+            color: #e0e0e0;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Responsive สำหรับหน้าจอมือถือ */
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 1rem;
+            }
+            nav a {
+                font-size: 0.95rem;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- เมนูนำทาง -->
     <nav>
         <ul>
             <li><a href="index.html">หน้าหลัก</a></li>
@@ -17,13 +201,16 @@
         </ul>
     </nav>
 
+    <!-- เนื้อหาผลงานและกิจกรรม -->
     <section class="container page-content">
         <h2 class="page-title">PORTFOLIO <span>// ผลงานและกิจกรรม</span></h2>
         
         <div class="grid-container">
             <!-- ชิ้นงานที่ 1 -->
             <div class="work-card">
-                <img src="ประสานเสียง.jpg" alt="ผลงานที่ 1">
+                <div class="img-container">
+                    <img src="ประสานเสียง.jpg" alt="เข้าร่วมการร้องเพลงประสานเสียงในวันตรุษจีน">
+                </div>
                 <div class="work-desc">
                     <h4>เข้าร่วมการร้องเพลงประสานเสียงในวันตรุษจีน</h4>
                 </div>
@@ -31,7 +218,9 @@
             
             <!-- ชิ้นงานที่ 2 -->
             <div class="work-card">
-                <img src="เชิดสิงโต.jpg" alt="ผลงานที่ 2">
+                <div class="img-container">
+                    <img src="เชิดสิงโต.jpg" alt="การเชิดสิงโต ในวันตรุษจีน">
+                </div>
                 <div class="work-desc">
                     <h4>ได้รับมอบหมายจากครูหัวหน้าแผนการเรียนในการเชิดสิงโต ในวันตรุษจีน</h4>
                 </div>
@@ -39,12 +228,15 @@
 
             <!-- ชิ้นงานที่ 3 -->
             <div class="work-card">
-                <img src="B119F96A-732D-44D4-BD1D-524A6F4217FE.jpeg" alt="ผลงานที่ 3">
+                <div class="img-container">
+                    <img src="B119F96A-732D-44D4-BD1D-524A6F4217FE.jpeg" alt="เข้าร่วมค่ายปันน้ำใจ">
+                </div>
                 <div class="work-desc">
                     <h4>เข้าร่วมค่ายปันน้ำใจ ที่โรงเรียนพนัสพิทยาคาร</h4>
                 </div>
             </div>
         </div>
     </section>
+
 </body>
 </html>
